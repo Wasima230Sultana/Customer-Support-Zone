@@ -4,7 +4,7 @@ const FooterPart = () => {
     return (
         <div className='bg-[#000000] min-h-96'>
         
-      <div className='max-w-[1100px] mx-auto text-[#ffffff] grid grid-col-1 md:grid-cols-5 gap-5 border-b-1 border-gray-700 p-8 mt-8'>
+      <div className='max-w-[1100px] mx-auto text-[#ffffff] grid grid-col-1 md:grid-cols-5 gap-5 border-b-1 border-gray-700 p-8'>
         <div className='space-y-2'>
           <h1 className='font-bold text-xl'>CS — Ticket System</h1>
           <p className='text-[#A1A1AA] text-sm'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
