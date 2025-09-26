@@ -4,7 +4,7 @@ import Navbar from './Components/Navbar/Navbar'
 import { Suspense } from 'react'
 import Banner from './Components/Banner/Banner'
 import CustomerService from './Components/CustomerService/CustomerService'
-
+import FooterPart from './Components/FooterPart/FooterPart'
 const fetchCustomer = async () => {
   const res = await fetch('/customer.json')
   return res.json();
@@ -32,6 +32,10 @@ function App() {
         
 
       </div>
+
+
+      <FooterPart></FooterPart>
+
 
 
     </>
