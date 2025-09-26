@@ -27,6 +27,8 @@ Mutability: Read-only (immutable); a child component cannot directly change its 
 Use props for data that comes from outside the component (parent to child). 
 </p>
 
+
+
 <h4>Props : </h4>
 <p>
 
@@ -39,6 +41,8 @@ Mutability: Mutable (changeable) within the component.
 Use state for data that originates and changes inside the component. 
 </p>
 <hr>
+
+
 
 <h2>About useState hook and how it's work : </h2>
 <h4>useState hook : </h4>
@@ -58,19 +62,31 @@ setState → function to update state.
 Updating state triggers re-render of the component.
 
 Example :
+
 import { useState } from "react";
+
 function Counter() {
+
   const [count, setCount] = useState(0);
+
   return (
+
     <div>
+
       <p>Count: {count}</p>
+
       <button onClick={() => setCount(count + 1)}>Increase</button>
+
     </div>
+
   );
+
 }
 
 </p>
 <hr>
+
+
 
 <h2>Share state between components in React : </h2>
 <h4>Way to share state : </h4>
@@ -83,6 +99,8 @@ External State Management Libraries : For complex applications with a large amou
 </p>
 <hr>
 
+
+
 <h2>Event handling done in React : </h2>
 <h4>event handling : </h4>
 <p>
@@ -90,9 +108,13 @@ React events are similar to DOM events but camelCased and handled with functions
 pass a function reference, not a string (onClick={handleClick} not onClick="handleClick()").
 
 Example : 
+
 function Button() {
+
   function handleClick() {
+
     alert("Button clicked!");
+
   }
 
   return <button onClick={handleClick}>Click Me</button>;
