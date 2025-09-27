@@ -1,7 +1,7 @@
 
 import './App.css'
 import Navbar from './Components/Navbar/Navbar'
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import Banner from './Components/Banner/Banner'
 import CustomerService from './Components/CustomerService/CustomerService'
 import FooterPart from './Components/FooterPart/FooterPart'
@@ -14,7 +14,8 @@ const fetchCustomer = async () => {
 const customerPromise = fetchCustomer();
 
 function App() {
-
+const [isSelected, setIsSelected] = useState([])
+const [inProgress, setInProgress] = useState(0)
 
   return (
     <>
@@ -23,11 +24,11 @@ function App() {
       <div className='bg-[#f2f4f6] max-h-full'>
         
           <Suspense fallback={<span className="loading loading-spinner loading-xl"></span>}>
-            <Banner> </Banner>
+            <Banner inProgress={inProgress}> </Banner>
           </Suspense>
  
           <Suspense>
-            <CustomerService customerPromise={customerPromise}> </CustomerService>
+            <CustomerService setIsSelected={setIsSelected} isSelected={isSelected} customerPromise={customerPromise} setInProgress={setInProgress} inProgress={inProgress}> </CustomerService>
           </Suspense>
         
 

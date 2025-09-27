@@ -2,7 +2,7 @@ import React from 'react';
 import vectorImg from '../../assets/vector1.png'
 import vecImg from '../../assets/vector2.png'
 
-const Banner = () => {
+const Banner = ({inProgress}) => {
     return (
         <div className='max-w-[1100px] mx-auto pt-5 flex flex-wrap justify-between items-center gap-3'> 
 
@@ -16,7 +16,7 @@ const Banner = () => {
                   <div className='absolute inset-0 flex flex-col items-center justify-center z-20 text-center'>
 
                      <p className='text-white text-xl '>In Progress</p>
-                   <p className='text-white text-4xl font-medium'>0</p>
+                   <p className='text-white text-4xl font-medium'>{inProgress}</p>
                  
                   </div>
                   

@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CustomerService from '../CustomerService/CustomerService';
-const Services = ({ customer }) => {
+const Services = ({ customer, setInProgress, inProgress,setIsSelected,isSelected }) => {
+    
+    
+    const handleProgress = (customerData) => {
+       setInProgress(inProgress + 1)
+       setIsSelected([...isSelected,customerData])
+    };
     return (
-        <div className="card bg-base-100 card-sm shadow-sm">
+        <div className="card bg-base-100 card-sm shadow-sm" onClick={() => {handleProgress(customer) }}>
             <div className="card-body">
 
                 <div className='flex justify-between items-center'>
