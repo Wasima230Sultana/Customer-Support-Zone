@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 const Mainpart = ({ promise }) => {
     const data = use(promise);
     const [customerData, setCustomerData] = useState(data);
-
+    const [toggle, setToggle] = useState(false);
     const [inProgress, setInProgress] = useState([])
     const [resolved, setResolved] = useState([])
 
@@ -19,8 +19,9 @@ const Mainpart = ({ promise }) => {
             toast('Already clicked');
             return;
         }
-        const newSelection = [...inProgress, customer]
-        setInProgress(newSelection)
+        const newSelection = [...inProgress, customer];
+        setInProgress(newSelection);
+        setToggle(true);
     }
 
     const handleProgress = (customer) => {
@@ -32,7 +33,11 @@ const Mainpart = ({ promise }) => {
 
         const remainingResolved = customerData.filter((selected) => selected.id !== customer.id)
         setCustomerData(remainingResolved);
-    }
+
+        if (remainingSelection.length === 0) {
+            setToggle(false);
+        }
+    };
 
 
 
@@ -45,57 +50,62 @@ const Mainpart = ({ promise }) => {
 
             <section className='w-11/12 mx-auto '>
                 <div className='py-10 grid grid-cols-1 lg:grid-cols-12 gap-5'>
-                     <div className=' lg:col-span-9 space-y-5'>
-                    <h2 className='font-semibold text-4xl'>Customer Tickets</h2>
-                    <div className=' grid grid-cols-1 lg:grid-cols-2 gap-5'>
-                        {
-                            customerData.map((customer) => (
-                                <Services
-                                handleSelection = {handleSelection}
-                                key={customer.id}
-                                customer={customer}
-                                ></Services>
-                            ))
-                        }
+                    <div className=' lg:col-span-9 space-y-5'>
+                        <h2 className='font-semibold text-4xl'>Customer Tickets</h2>
+                        <div className=' grid grid-cols-1 lg:grid-cols-2 gap-5'>
+                            {
+                                customerData.map((customer) => (
+                                    <Services
+                                        handleSelection={handleSelection}
+                                        key={customer.id}
+                                        customer={customer}
+
+                                    ></Services>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+
+                    <div className='lg:col-span-3 space-y-5'>
+
+                        <div>
+                            <h2 className="font-semibold text-4xl text-[#34485A] mb-5">Task Status</h2>
+                            {inProgress.length === 0 ? (
+                                <p className="text-[16px] text-[#627382]">
+                                    Select a ticket to add to Task Status
+                                </p>
+                            ) : (
+                                inProgress.map((customer) => (
+                                    <SelectedService
+                                        handleProgress={handleProgress}
+                                        key={customer.id}
+                                        customer={customer}
+                                    />
+                                ))
+                            )}
+                        </div>
+
+
+
+                        <div>
+                            <h2 className="font-semibold text-4xl text-[#34485A] mb-5">Resolved Task</h2>
+                            {resolved.length === 0 ? (
+                                <p className="text-[16px] text-[#627382]">
+                                    No resolved tasks yet.
+                                </p>
+                            ) : (
+                                resolved.map((customer) => (
+                                    <SelectedCard key={customer.id} customer={customer} />
+                                ))
+                            )}
+                        </div>
                     </div>
                 </div>
 
-
-                <div className='lg:col-span-3 space-y-5'>
-                   <h2 className='font-semibold text-4xl'>Task Status</h2>
-                   <p className='text-[16px] text-[#627382]'>Select a ticket to add to Task Status</p> 
-                   <div>
-                    {
-                        inProgress.map((customer) => (
-                            <SelectedService
-                            handleProgress = {handleProgress}
-                            key={customer.id}
-                            customer={customer}
-                            >                              
-                            </SelectedService>
-                        ))
-                    }
-                   </div>
-
-                <h2 className='font-semibold text-4xl'>Resolved Task</h2>
-               <p className='text-[16px] text-[#627382]'>No resolved tasks yet.</p>
-                <div>
-                    {
-                        resolved.map((customer) => (
-                            <SelectedCard
-                            key={customer.id}
-                            customer={customer}
-                            >                 
-                            </SelectedCard>
-                        ))
-                    }
-                </div>
-                </div>
-                </div>
-               
             </section>
-           
-           
+
+
 
         </div>
     );
