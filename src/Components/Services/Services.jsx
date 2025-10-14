@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
-import CustomerService from '../CustomerService/CustomerService';
-const Services = ({ customer, setInProgress, inProgress,setIsSelected,isSelected }) => {
-    
-    
-    const handleProgress = (customerData) => {
-       setInProgress(inProgress + 1)
-       setIsSelected([...isSelected,customerData])
-    };
+import React, {  } from 'react';
+const Services = ({ customer, handleSelection }) => {
+  
     return (
-        <div className="card bg-base-100 card-sm shadow-sm" onClick={() => {handleProgress(customer) }}>
+        <div className="card bg-base-100 card-sm shadow-sm" onClick={() => {handleSelection(customer) }}>
             <div className="card-body">
 
                 <div className='flex justify-between items-center'>
-                    <h2 className="card-title text-[#001931]">{customer.title}</h2>
+                    <h2 className="card-title text-[#001931]">
+                        {customer.title}</h2>
 
                     <div className=''>
                         <button

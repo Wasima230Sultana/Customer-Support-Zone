@@ -1,9 +1,9 @@
 import React from 'react';
 import SelectedCard from '../SelectedCard/SelectedCard';
-const SelectedService = ({customerData,isSelected}) => {
+const SelectedService = ({isSelected,resolved,setResolved}) => {
     return (
 
-        customerData.map(customer=> <SelectedCard customer={customer}></SelectedCard>
+        isSelected.map(customer=> <SelectedCard customer={customer} isSelected={isSelected} resolved={resolved} setResolved={setResolved}></SelectedCard>
             )
 
         
