@@ -1,6 +1,8 @@
 import React, { use, useState } from 'react';
 import Banner from '../Banner/Banner'
 import Services from '../Services/Services';
+import SelectedService from '../SelectedService/SelectedService';
+import SelectedCard from '../SelectedCard/SelectedCard';
 const Mainpart = ({ customerPromise }) => {
     const data = use(customerPromise);
     const [customerData, setCustomerData] = useState(data);
@@ -41,7 +43,7 @@ const Mainpart = ({ customerPromise }) => {
             <section className='w-11/12 mx-auto '>
                 <div className='py-10 grid grid-cols-1 lg:grid-cols-12 gap-5'>
                      <div className=' lg:col-span-9 space-y-5'>
-                    <h2 className='font-bold text-4xl'>services</h2>
+                    <h2 className='font-semibold text-4xl'>Customer Tickets</h2>
                     <div className=' grid grid-cols-1 lg:grid-cols-2 gap-5'>
                         {
                             customerData.map((customer) => (
@@ -57,7 +59,34 @@ const Mainpart = ({ customerPromise }) => {
 
 
                 <div className='lg:col-span-3 space-y-5'>
-                   <h2>selection and complete</h2> 
+                   <h2 className='font-semibold text-4xl'>Task Status</h2>
+                   <p className='text-[16px] text-[#627382]'>Select a ticket to add to Task Status</p> 
+                   <div>
+                    {
+                        inProgress.map((customer) => (
+                            <SelectedService
+                            handleProgress = {handleProgress}
+                            key={customer.id}
+                            customer={customer}
+                            >                              
+                            </SelectedService>
+                        ))
+                    }
+                   </div>
+
+                <h2 className='font-semibold text-4xl'>Resolved Task</h2>
+               <p className='text-[16px] text-[#627382]'>No resolved tasks yet.</p>
+                <div>
+                    {
+                        resolved.map((customer) => (
+                            <SelectedCard
+                            key={customer.id}
+                            customer={customer}
+                            >                 
+                            </SelectedCard>
+                        ))
+                    }
+                </div>
                 </div>
                 </div>
                
