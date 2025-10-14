@@ -3,6 +3,8 @@ import Banner from '../Banner/Banner'
 import Services from '../Services/Services';
 import SelectedService from '../SelectedService/SelectedService';
 import SelectedCard from '../SelectedCard/SelectedCard';
+import { toast } from 'react-toastify';
+
 const Mainpart = ({ customerPromise }) => {
     const data = use(customerPromise);
     const [customerData, setCustomerData] = useState(data);
@@ -14,7 +16,7 @@ const Mainpart = ({ customerPromise }) => {
 
         const isExist = inProgress.find((selected) => selected.id == customer.id);
         if (isExist) {
-            alert('Already clicked');
+            toast('Already clicked');
             return;
         }
         const newSelection = [...inProgress, customer]
