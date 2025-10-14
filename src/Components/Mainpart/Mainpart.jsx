@@ -5,8 +5,8 @@ import SelectedService from '../SelectedService/SelectedService';
 import SelectedCard from '../SelectedCard/SelectedCard';
 import { toast } from 'react-toastify';
 
-const Mainpart = ({ customerPromise }) => {
-    const data = use(customerPromise);
+const Mainpart = ({ promise }) => {
+    const data = use(promise);
     const [customerData, setCustomerData] = useState(data);
 
     const [inProgress, setInProgress] = useState([])
@@ -22,6 +22,7 @@ const Mainpart = ({ customerPromise }) => {
         const newSelection = [...inProgress, customer]
         setInProgress(newSelection)
     }
+
     const handleProgress = (customer) => {
         const newProgress = [...resolved, customer]
         setResolved(newProgress);
@@ -29,7 +30,7 @@ const Mainpart = ({ customerPromise }) => {
         const remainingSelection = inProgress.filter((selected => selected.id !== customer.id));
         setInProgress(remainingSelection)
 
-        const remainingResolved = customerData.filter((selected) => selected.id !== customerData.id)
+        const remainingResolved = customerData.filter((selected) => selected.id !== customer.id)
         setCustomerData(remainingResolved);
     }
 

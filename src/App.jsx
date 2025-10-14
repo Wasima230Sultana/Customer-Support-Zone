@@ -12,10 +12,10 @@ const fetchCustomer = async () => {
 
 }
 
-const customerPromise = fetchCustomer();
 
 function App() {
 
+const customerPromise = fetchCustomer();
 
 
   return (
@@ -26,7 +26,7 @@ function App() {
 
 
         <Suspense fallback={<span className="loading loading-spinner loading-xl"></span>}>
-          <Mainpart customerPromise={customerPromise}></Mainpart>
+          <Mainpart promise={customerPromise}></Mainpart>
         </Suspense>
 
 
