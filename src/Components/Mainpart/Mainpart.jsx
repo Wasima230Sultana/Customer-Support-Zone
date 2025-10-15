@@ -13,7 +13,7 @@ const Mainpart = ({ promise }) => {
     const [resolved, setResolved] = useState([])
 
     const handleSelection = (customer) => {
-
+        toast('In progress')
         const isExist = inProgress.find((selected) => selected.id == customer.id);
         if (isExist) {
             toast('Already clicked');
@@ -25,6 +25,7 @@ const Mainpart = ({ promise }) => {
     }
 
     const handleProgress = (customer) => {
+        toast('Resolved')
         const newProgress = [...resolved, customer]
         setResolved(newProgress);
 
